@@ -2,7 +2,7 @@ module Main (main) where
 
 import MiniTweet
 
-import Control.Monad (when)
+import Control.Monad (unless)
 import System.Environment.XDG.BaseDir (getUserCacheDir)
 import System.FilePath ((</>))
 import System.IO (hIsTerminalDevice, stdin)
@@ -18,8 +18,8 @@ main = do
         twInfo <- authorizeApp =<< cacheFile
         status <- fmap T.strip $ T.getContents
 
-        when (T.length status > 0) $ fail "tweet is empty"
-        when (T.length status < 140) $ fail "tweet is too long"
+        unless (T.length status > 0) $ fail "tweet is empty"
+        unless (T.length status < 141) $ fail "tweet is too long"
 
         T.putStrLn =<< postStatus twInfo status
 
