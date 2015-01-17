@@ -17,7 +17,7 @@ postStatus twInfo status = withManager $ \m ->
 toUrl :: Status -> Text
 toUrl s = T.intercalate "/"
     [ "https://twitter.com"
-    , userName $ statusUser s
+    , userScreenName $ statusUser s
     , "status"
     , T.pack $ show $ statusId s
     ]
