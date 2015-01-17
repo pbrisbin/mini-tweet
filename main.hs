@@ -2,7 +2,7 @@ module Main (main) where
 
 import MiniTweet
 
-import Control.Monad (unless)
+import Control.Monad (unless, when)
 import System.Environment.XDG.BaseDir (getUserCacheDir)
 import System.FilePath ((</>))
 import System.IO (hIsTerminalDevice, stdin)
