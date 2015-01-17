@@ -14,7 +14,19 @@ library
   hs-source-dirs:       src
   ghc-options:          -Wall -static
   exposed-modules:      MiniTweet
+  other-modules:        MiniTweet.Authorize
+                      , MiniTweet.Cache
+                      , MiniTweet.OAuth
   build-depends:        base >= 4.6 && < 5
+                      , authenticate-oauth >= 1.4 && < 1.5
+                      , bytestring
+                      , data-default
+                      , directory
+                      , filepath
+                      , http-conduit >= 2.0 && < 2.2
+                      , text >= 0.11 && < 2.0
+                      , transformers
+                      , twitter-conduit >= 0.1.0 && < 0.2
 
 executable mt
   default-language:     Haskell2010
