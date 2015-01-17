@@ -6,17 +6,17 @@ module MiniTweet.Authorize
 import MiniTweet.Cache
 import MiniTweet.OAuth
 
-import Control.Monad.IO.Class (liftIO)
+import Control.Monad.IO.Class (MonadIO, liftIO)
 import Data.Default (def)
-import Network.HTTP.Conduit (withManager)
+import Network.HTTP.Conduit (Manager)
 import System.IO (hFlush, stdout)
 import Web.Twitter.Conduit (TWInfo, setCredential)
 
 import qualified Data.ByteString.Char8 as C8
 import qualified Web.Authenticate.OAuth as OA
 
-authorizeApp :: FilePath -> IO TWInfo
-authorizeApp fp = withManager $ \m -> do
+authorizeApp :: MonadIO m => Manager -> FilePath -> m TWInfo
+authorizeApp m fp = do
     cred <- withCacheFile fp $ do
         c <- OA.getTemporaryCredential oauth m
         pin <- liftIO $ do
