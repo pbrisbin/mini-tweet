@@ -16,6 +16,7 @@ library
   exposed-modules:      MiniTweet
   other-modules:        MiniTweet.Authorize
                       , MiniTweet.Cache
+                      , MiniTweet.Status
                       , MiniTweet.OAuth
   build-depends:        base >= 4.6 && < 5
                       , authenticate-oauth >= 1.4 && < 1.5
@@ -27,6 +28,7 @@ library
                       , text >= 0.11 && < 2.0
                       , transformers
                       , twitter-conduit >= 0.1.0 && < 0.2
+                      , twitter-types
 
 executable mt
   default-language:     Haskell2010
@@ -34,6 +36,9 @@ executable mt
   ghc-options:          -Wall -static
   build-depends:        base
                       , mini-tweet
+                      , filepath
+                      , text
+                      , xdg-basedir
 
 source-repository head
   type:                 git
